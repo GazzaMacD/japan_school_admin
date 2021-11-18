@@ -3,8 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Logo } from '@/components/elements/Logo';
-
+import * as colors from '@/styles/colors';
 const brandGreen = '#b0e600';
 const oliveGreen = '#79990f';
 const mq = {
@@ -12,7 +11,7 @@ const mq = {
 };
 
 const Button = styled.button({
-  backgroundColor: brandGreen,
+  backgroundColor: colors.green,
   color: 'white',
   border: 'none',
   padding: '10px 20px',
@@ -31,17 +30,8 @@ const Home: NextPage = () => {
         <meta name="description" content="Manage all content here." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main
-        css={{
-          backgroundColor: brandGreen,
-          [mq.small]: {
-            backgroundColor: 'green',
-          },
-        }}
-      >
-        <Logo />
-      </main>
-      <p css={{ color: oliveGreen }}>Some Text</p>
+      <div></div>
+      <p css={{ color: colors.green }}>Some Text</p>
       <Button>I am a button</Button>
     </div>
   );
