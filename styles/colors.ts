@@ -1,5 +1,6 @@
 export const base = '#ffffff';
 export const green = '#58b234';
+export const greenLighter = '#68b948';
 export const darkGreen = '#113d32';
 export const oliveGreen = '#79990f';
 export const lightGreen = '#dcf297';

@@ -1,14 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import type { NextPage } from 'next';
+import type { ReactElement } from 'react';
+import { BaseLayout } from '@/components/layouts/BaseLayout';
+import { AdminLayout } from '@/components/layouts/AdminLayout';
 import Head from 'next/head';
 import * as colors from '@/styles/colors';
-const brandGreen = '#b0e600';
-const oliveGreen = '#79990f';
-const mq = {
-  small: '@media (min-width: 576px)',
-};
 
 const Button = styled.button({
   backgroundColor: colors.green,
@@ -17,12 +14,11 @@ const Button = styled.button({
   padding: '10px 20px',
   cursor: 'pointer',
   '&:hover ': {
-    backgroundColor: oliveGreen,
+    backgroundColor: colors.darkGreen,
   },
 });
 
-const Home: NextPage = () => {
-  const handleAlert = () => alert('hi');
+const Home = () => {
   return (
     <div>
       <Head>
@@ -34,6 +30,14 @@ const Home: NextPage = () => {
       <p css={{ color: colors.green }}>Some Text</p>
       <Button>I am a button</Button>
     </div>
+  );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <BaseLayout>
+      <AdminLayout>{page}</AdminLayout>
+    </BaseLayout>
   );
 };
 
