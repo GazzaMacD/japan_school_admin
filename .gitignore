@@ -40,4 +40,4 @@ yarn-error.log*
 .vscode
 
 #project
-.project_files/
+project_files/

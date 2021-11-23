@@ -30,6 +30,9 @@ const Button = styled.button(
     lineHeight: '1',
     borderRadius: '3px',
     cursor: 'pointer',
+    ':focus': {
+      outline: 'none',
+    },
   },
   ({ variant = 'primary' }: { variant?: TVariants }) => buttonVariants[variant]
 );

@@ -15,6 +15,7 @@ const inputStyles = {
   },
 };
 
+const Label = styled.label({ textTransform: 'capitalize', color: colors.text });
 const Input = styled.input({ borderRadius: '3px' }, inputStyles);
 const TextArea = styled.textarea(inputStyles);
 const FormGroup = styled.div({
@@ -23,4 +24,4 @@ const FormGroup = styled.div({
   flexDirection: 'column',
 });
 
-export { Input, TextArea, FormGroup };
+export { Input, TextArea, FormGroup, Label };

@@ -6,12 +6,20 @@ import { BaseLayout } from '@/components/layouts/BaseLayout';
 import { LoginLayout } from '@/components/layouts/LoginLayout';
 import { Logo } from '@/components/elements/Logo';
 import Head from 'next/head';
-import { FormGroup, Button, Input } from '@/components/lib';
+import Image from 'next/image';
+import { FormGroup, Label, Button, Input } from '@/components/lib';
 import * as colors from '@/styles/colors';
 
 const Login = () => {
-  function handleSubmit(event) {
-    event.preventDefault;
+  function handleSubmit(event: React.SyntheticEvent) {
+    event.preventDefault();
+    const target = event.target as typeof event.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+    const email = target.email.value;
+    const password = target.password.value;
+    console.log(email, password);
   }
   return (
     <>
@@ -26,15 +34,27 @@ const Login = () => {
           maxWidth: '96%',
           display: 'flex',
           alignItems: 'stretch',
-          boxShadow: `0 0 3px ${colors.lightGreen}`,
+          border: `solid 1px ${colors.greenLighter}`,
+          boxShadow: `0 0 20px ${colors.lightGreen}`,
         }}
       >
         <section
           css={{
-            flexGrow: '2',
+            width: '400px',
+            position: 'relative',
           }}
         >
-          background image here
+          <Image
+            src="/images/green_girl.jpg"
+            alt="green girl"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            priority
+            css={{
+              borderRadius: '10px 0 0 10px',
+            }}
+          />
         </section>
         <section
           css={{
@@ -44,24 +64,24 @@ const Login = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            minWidth: '300px',
           }}
         >
           <div
             css={{
-              width: '100px',
+              width: '150px',
             }}
           >
             <Logo />
-            <h1>Login</h1>
           </div>
           <form onSubmit={handleSubmit}>
             <FormGroup>
-              <label>email</label>
-              <Input type="email" />
+              <Label htmlFor="email">email</Label>
+              <Input type="email" name="email" id="email" />
             </FormGroup>
             <FormGroup>
-              <label>password</label>
-              <Input type="password" />
+              <Label htmlFor="password">password</Label>
+              <Input type="password" name="password" id="password" />
             </FormGroup>
             <Button type="submit">Login</Button>
           </form>
