@@ -9,9 +9,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { FormGroup, Label, Button, Input } from '@/components/lib';
 import * as colors from '@/styles/colors';
+import { client } from '@/common/utils/apiUtils';
 
 const Login = () => {
-  function handleSubmit(event: React.SyntheticEvent) {
+  async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     const target = event.target as typeof event.target & {
       email: { value: string };
@@ -19,7 +20,13 @@ const Login = () => {
     };
     const email = target.email.value;
     const password = target.password.value;
-    console.log(email, password);
+    try {
+      const data = await client('auth/login/', { data: { email, password } });
+    } catch (error) {
+      console.error(error);
+    }
+    target.email.value = '';
+    target.password.value = '';
   }
   return (
     <>
